@@ -56,7 +56,7 @@ export default function Home() {
           setFiles([...updated]);
         }, 300);
 
-        const res = await fetch("http://localhost:8000/upload-docx", {
+        const res = await fetch("/api/upload-docx", {
           method: "POST",
           body: form,
         });
@@ -79,7 +79,7 @@ export default function Home() {
 
   // ===== Download Excel =====
   const downloadExcel = async () => {
-    const res = await fetch("http://localhost:8000/download-excel"); // GET
+    const res = await fetch("/api/download-excel"); // GET
 
     if (!res.ok) {
       alert("No data available to download");
@@ -99,7 +99,7 @@ export default function Home() {
 
   // ===== Reset =====
 const reset = async () => {
-  await fetch("http://localhost:8000/reset-session", {
+  await fetch("/api/reset-session", {
     method: "POST"
   });
   setFiles([]);
